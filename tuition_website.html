@@ -3,206 +3,879 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LearnHive | Personalized Tuition for Curious Young Minds</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>LearnHive Academy | Personalized Tuition for Curious Young Minds</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+    
+    :root {
+      --primary-color: #6366f1;
+      --primary-light: #8b5cf6;
+      --primary-dark: #4f46e5;
+      --secondary-color: #06b6d4;
+      --accent-color: #f59e0b;
+      --success-color: #10b981;
+      --text-primary: #1f2937;
+      --text-secondary: #6b7280;
+      --bg-primary: #ffffff;
+      --bg-secondary: linear-gradient(135deg, #f8faff 0%, #eef2ff 50%, #e0e7ff 100%);
+      --bg-accent: #f1f5f9;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+      --gradient-secondary: linear-gradient(135deg, var(--secondary-color), var(--primary-light));
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-secondary);
+      scroll-behavior: smooth;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Styles */
     header {
-      background: linear-gradient(to right, #4CAF50, #66bb6a);
+      background: var(--gradient-primary);
       color: white;
       text-align: center;
-      padding: 40px 15px;
+      padding: 80px 20px;
+      position: relative;
+      overflow: hidden;
     }
-    header h1 { font-size: 2.5em; margin-bottom: 10px; }
-    header p { font-size: 1.1em; }
-
-    nav {
-      background: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://cdn.pixabay.com/photo/2016/11/29/04/00/teacher-1867431_1280.jpg') center/cover;
+      opacity: 0.1;
+      z-index: 1;
+    }
+    
+    header * {
+      position: relative;
+      z-index: 2;
+    }
+    
+    header h1 { 
+      font-size: 3.5rem; 
+      font-weight: 700;
+      margin-bottom: 16px;
+      animation: fadeInUp 1s ease-out;
+    }
+    
+    header p { 
+      font-size: 1.25rem;
+      font-weight: 300;
+      opacity: 0.9;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+    
+    /* CTA Bar */
+    .cta-bar {
       position: sticky;
       top: 0;
-      z-index: 100;
+      background: var(--gradient-secondary);
+      color: white;
+      text-align: center;
+      padding: 12px 20px;
+      font-size: 1rem;
+      font-weight: 500;
+      z-index: 2000;
+      box-shadow: var(--shadow-md);
+      animation: slideDown 0.5s ease-out;
     }
+    
+    .cta-bar a {
+      color: white;
+      text-decoration: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    
+    .cta-bar a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+    
+    /* Navigation */
+    nav {
+      background: var(--bg-primary);
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 64px;
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+    
     nav ul {
       list-style: none;
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      padding: 10px 0;
+      padding: 0;
     }
-    nav li { margin: 5px 10px; }
+    
+    nav li { 
+      margin: 0; 
+    }
+    
     nav a {
+      display: block;
       text-decoration: none;
-      color: #4CAF50;
-      font-weight: 600;
+      color: var(--text-primary);
+      font-weight: 500;
+      padding: 20px 24px;
+      position: relative;
+      transition: all 0.3s ease;
     }
-
-    section { padding: 30px 15px; max-width: 1000px; margin: auto; }
-    h2 { text-align: center; color: #4CAF50; margin-bottom: 20px; font-size: 2em; }
-
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: var(--primary-color);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    
+    nav a:hover {
+      color: var(--primary-color);
+      background: var(--bg-accent);
+    }
+    
+    nav a:hover::after {
+      width: 80%;
+    }
+    
+    /* Section Styles */
+    section { 
+      padding: 80px 20px;
+      animation: fadeIn 0.8s ease-out;
+    }
+    
+    section:nth-child(even) {
+      background: var(--bg-primary);
+    }
+    
+    h2 { 
+      text-align: center; 
+      color: var(--text-primary);
+      margin-bottom: 48px; 
+      font-size: 2.5rem;
+      font-weight: 700;
+      position: relative;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--gradient-primary);
+      border-radius: 2px;
+    }
+    
+    /* Cards */
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
     }
+    
     .card {
-      background: white;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      background: var(--bg-primary);
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
       text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
     }
-    .card h3 { margin-bottom: 10px; color: #333; font-size: 1.2em; }
-    .card p { font-size: 0.95em; }
-
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--primary-color);
+    }
+    
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .card h3 { 
+      margin-bottom: 16px; 
+      color: var(--text-primary);
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    
+    .card p { 
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    
+    /* Feature Grid */
+    .feature-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+      margin-top: 48px;
+    }
+    
+    .feature-item {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      padding: 32px;
+      background: var(--bg-primary);
+      border-radius: 20px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+    }
+    
+    .feature-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .feature-item.reverse {
+      flex-direction: row-reverse;
+    }
+    
+    .feature-item img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+      transition: transform 0.3s ease;
+    }
+    
+    .feature-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    .feature-item div {
+      flex: 1;
+      min-width: 280px;
+    }
+    
+    .feature-item h3 {
+      color: var(--primary-color);
+      margin-bottom: 16px;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    
+    .feature-item p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    
+    /* Benefits List */
     ul.benefits {
       list-style: none;
-      padding-left: 0;
-      max-width: 700px;
-      margin: auto;
-      font-size: 1em;
+      max-width: 600px;
+      margin: 48px auto 0;
+      display: grid;
+      gap: 20px;
     }
+    
     ul.benefits li {
-      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background: var(--bg-primary);
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
     }
+    
+    ul.benefits li:hover {
+      transform: translateX(8px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--success-color);
+    }
+    
     ul.benefits li::before {
-      content: '✅';
-      margin-right: 10px;
-      color: #4CAF50;
+      content: '✨';
+      font-size: 1.5rem;
+      margin-right: 16px;
+      color: var(--success-color);
     }
-
-    .contact-form input, .contact-form textarea, .contact-form select {
+    
+    /* Contact Form */
+    .contact-form {
+      max-width: 600px;
+      margin: 48px auto;
+      background: var(--bg-primary);
+      padding: 48px;
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-color);
+    }
+    
+    .contact-form input, 
+    .contact-form textarea, 
+    .contact-form select {
       width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1em;
+      padding: 16px 20px;
+      margin: 12px 0;
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: var(--bg-secondary);
     }
+    
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+      transform: translateY(-2px);
+    }
+    
     .contact-form button {
-      background: #4CAF50;
+      background: var(--gradient-primary);
       color: white;
-      padding: 12px 25px;
+      padding: 16px 32px;
       border: none;
-      border-radius: 5px;
+      border-radius: 12px;
       cursor: pointer;
-      font-size: 1em;
+      font-size: 1.1rem;
+      font-weight: 600;
       width: 100%;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
     }
+    
     .contact-form button:hover {
-      background: #43a047;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
     }
+    
+    .contact-form button:active {
+      transform: translateY(0);
+    }
+    
+    /* Contact Info */
+    .contact-info {
+      text-align: center;
+      margin-top: 48px;
+      padding: 32px;
+      background: var(--bg-primary);
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+    }
+    
+    .contact-info a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-info a:hover {
+      color: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+    
+    /* Footer */
     footer {
-      background: #eee;
+      background: var(--text-primary);
+      color: white;
       text-align: center;
-      padding: 15px;
-      margin-top: 40px;
-      font-size: 0.9em;
+      padding: 40px 20px;
+      margin-top: 80px;
     }
-    .whatsapp-link {
-      display: block;
-      text-align: center;
-      margin-top: 20px;
-      font-size: 1em;
+    
+    /* WhatsApp Float */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #25d366;
+      border-radius: 50%;
+      padding: 16px;
+      box-shadow: var(--shadow-xl);
+      z-index: 999;
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+    
+    .whatsapp-float:hover {
+      background: #1ebe5d;
+      transform: scale(1.1);
+    }
+    
+    .whatsapp-float img {
+      width: 32px;
+      height: 32px;
+      filter: brightness(0) invert(1);
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+      from { 
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.5rem; }
+      header p { font-size: 1.1rem; }
+      section { padding: 60px 20px; }
+      h2 { font-size: 2rem; }
+      .feature-item { gap: 32px; padding: 24px; }
+      .feature-item.reverse { flex-direction: column; }
+      .contact-form { padding: 32px 24px; }
+      nav ul { flex-direction: column; }
+      nav a { padding: 16px 24px; }
+    }
+    
+    /* Scroll animations */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    
+    .animate-on-scroll.animated {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>LearnHive</h1>
-    <p>Personalized Home & Online Tuition for Classes 1–8</p>
+    <div class="container">
+      <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.7), rgba(139, 92, 246, 0.6)), url('https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=500&q=80') center/cover; padding: 80px 40px; border-radius: 20px; margin-bottom: 30px; position: relative; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.15);">
+      <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.05) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255,255,255,0.03) 0%, transparent 50%); z-index: 1;"></div>
+      <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"grain\" width=\"100\" height=\"100\" patternUnits=\"userSpaceOnUse\"><circle cx=\"50\" cy=\"50\" r=\"1\" fill=\"%23ffffff\" opacity=\"0.01\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23grain)\"/></svg>') repeat; animation: float 20s ease-in-out infinite; z-index: 0;"></div>
+      <div style="position: relative; z-index: 2; text-align: center;">
+        <div style="display: inline-block; padding: 8px 20px; background: rgba(255,255,255,0.15); border-radius: 50px; margin-bottom: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+        <span style="font-size: 0.9rem; font-weight: 700; letter-spacing: 1px;">✨ PREMIUM EDUCATION ✨</span>
+        </div>
+        <h1 style="margin: 0; text-shadow: 2px 4px 8px rgba(0,0,0,0.3); font-size: 3.8rem; font-weight: 800; letter-spacing: -1px; line-height: 1.1;">LearnHive Academy</h1>
+        <div style="width: 80px; height: 4px; background: linear-gradient(90deg, #ffffff, rgba(255,255,255,0.5)); margin: 20px auto; border-radius: 2px;"></div>
+      </div>
+      </div>
+      <noscript>
+      <h1>LearnHive Academy</h1>
+      </noscript>
+      <p style="font-size: 1.3rem; font-weight: 700; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">Personalized Home and Online Tuition for Classes 1–12</p>
+    </div>
+
+    <style>
+    @keyframes float {
+      0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
+      33% { transform: translateX(-30px) translateY(-30px) rotate(1deg); }
+      66% { transform: translateX(30px) translateY(-20px) rotate(-1deg); }
+    }
+    </style>
   </header>
+
+  <div class="cta-bar">
+    📞 Call Now: <strong>+91-9650924064</strong> | 💬 <a href="https://wa.me/919650924064">WhatsApp Us</a>
+  </div>
 
   <nav>
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#why">Why Us</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#value">Features</a></li>
+      <li><a href="#why-contact">Why Us</a></li>
+      <li><a href="#why-contact">Contact</a></li>
     </ul>
   </nav>
 
-  <section id="about">
-    <h2>About LearnHive</h2>
-    <p style="text-align: center; max-width: 700px; margin: auto;">
-      LearnHive is a personal tutoring initiative run by an experienced and passionate educator offering home tuition, online classes, and small-group batches.
-      With a deep understanding of the school syllabus (CBSE, ICSE & State Boards), LearnHive provides concept-based learning that builds confidence — not just grades.
-    </p>
+  <section id="about" class="animate-on-scroll">
+    <div class="container">
+      <h2>About LearnHive Academy</h2>
+      <p style="text-align: center; max-width: 800px; margin: auto; font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8;">
+        LearnHive Academy is a personal tutoring initiative run by an experienced and passionate educator offering home tuition, online classes, and small-group batches.
+        With a deep understanding of the school syllabus (CBSE, ICSE & State Boards), LearnHive provides concept-based learning that builds confidence — not just grades.
+      </p>
+    </div>
   </section>
 
-  <section id="services">
-    <h2>What We Offer</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>🏠 1-on-1 Home Tuition</h3>
-        <p>Personalized attention at your doorstep for focused guidance.</p>
-      </div>
-      <div class="card">
-        <h3>💻 Online Classes</h3>
-        <p>Live Zoom or Google Meet sessions using interactive digital tools.</p>
-      </div>
-      <div class="card">
-        <h3>👥 Center-based Batches</h3>
-        <p>Small group sessions for collaborative and peer-based learning.</p>
-      </div>
-      <div class="card">
-        <h3>📘 Subjects</h3>
-        <p>Math, Science, English, Hindi, EVS & Social Studies (Classes 1–8)</p>
+  <section id="services" class="animate-on-scroll">
+    <div class="container">
+      <h2>What We Offer</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>📘 Subjects (Classes 1–8)</h3>
+          <p>Math, Science, English, Hindi, EVS & Social Studies with interactive learning methods</p>
+        </div>
+        <div class="card">
+          <h3>📊 Commerce Tuition (Class 11 & 12)</h3>
+          <p>Expert coaching in Accounts, Economics & Business Studies with real-world application</p>
+        </div>
+        <div class="card">
+          <h3>💻 Online Classes</h3>
+          <p>Live interactive sessions using modern digital tools and platforms</p>
+        </div>
+        <div class="card">
+          <h3>👥 Center-based Batches</h3>
+          <p>Small group sessions for collaborative and peer-based learning experiences</p>
+        </div>
+        <div class="card">
+          <h3>🏆 Exam Preparation</h3>
+          <p>Specialized test preparation with customised material during exams</p>
+        </div>
+        <div class="card">
+          <h3>🎓 Homework Assistance</h3>
+          <p>Daily homework support and doubt clearing sessions to ensure consistent academic progress</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="why">
-    <h2>Why Parents Trust LearnHive</h2>
-    <ul class="benefits">
-      <li>One-on-one attention</li>
-      <li>Regular feedback and progress reports</li>
-      <li>Verified, experienced educator</li>
-      <li>Affordable, flexible timing</li>
-      <li>Conceptual learning > rote memorization</li>
-    </ul>
+  <section id="value" class="animate-on-scroll">
+    <div class="container">
+      <h2>What Makes LearnHive Special?</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>🎯 Focused Curriculum</h3>
+          <p>Aligned with CBSE, ICSE & State Boards, designed to ensure academic excellence through structured learning paths</p>
+        </div>
+        <div class="card">
+          <h3>💡 Concept Clarity</h3>
+          <p>Our teaching method emphasizes deep understanding over memorization, building strong foundations for lifelong learning</p>
+        </div>
+        <div class="card">
+          <h3>📈 Progress Tracking</h3>
+          <p>Monthly reports and performance feedback to help students and parents stay on track with personalized insights</p>
+        </div>
+        <div class="card">
+          <h3>🤝 Parent Collaboration</h3>
+          <p>Regular updates and sessions to keep parents involved in their child's educational journey and progress</p>
+        </div>
+        <div class="card">
+          <h3>💰 Affordable Excellence</h3>
+          <p>Quality education at competitive rates with flexible payment options, making premium tutoring accessible to all families</p>
+        </div>
+        <div class="card">
+          <h3>🏆 Proven Results</h3>
+          <p>Consistent track record of improved grades and enhanced confidence with students achieving their academic goals successfully</p>
+        </div>
+      </div>
+      </div>
+    </div>
   </section>
 
-  <section id="contact">
-    <h2>Enquire Now</h2>
-    <form class="contact-form" name="submit-to-google-sheet">
-      <input type="text" name="student_name" placeholder="Student's Name" required />
-      <input type="text" name="class" placeholder="Class (1-8)" required />
-      <input type="text" name="subjects" placeholder="Subjects" />
-      <select name="mode">
-        <option value="">Select Learning Mode</option>
-        <option value="home">Home Tuition</option>
-        <option value="online">Online</option>
-        <option value="center">Center-based Batch</option>
-      </select>
-      <input type="text" name="parent_name" placeholder="Parent's Name" required />
-      <input type="tel" name="contact" placeholder="Contact Number" required />
-      <input type="email" name="email" placeholder="Email (optional)" />
-      <textarea name="message" placeholder="Any additional information" rows="4"></textarea>
-      <button type="submit">Submit Enquiry</button>
-    </form>
-    <div class="whatsapp-link">
-      📞 <strong>+91-9650924064</strong> | ✉️ aroraneeru36@gmail.com <br/>
-      💬 <a href="https://wa.me/919650924064" target="_blank">Chat with us on WhatsApp</a>
+  <section id="why-us" class="animate-on-scroll">
+    <div class="container">
+      <h2>Why Trust LearnHive</h2>
+      
+      <div style="max-width: 800px; margin: 48px auto; display: flex; flex-direction: column; gap: 16px;">
+        
+        <div class="accordion-item" style="background: var(--bg-primary); border-radius: 12px; box-shadow: var(--shadow-md); border: 1px solid var(--border-color); overflow: hidden; transition: all 0.3s ease;">
+          <div class="accordion-header" style="display: flex; align-items: center; justify-content: space-between; padding: 24px; cursor: pointer; background: linear-gradient(135deg, #f8faff, #eef2ff); transition: all 0.3s ease;" onclick="toggleAccordion(this)">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <span style="font-size: 2rem;">🎯</span>
+              <h3 style="color: var(--primary-color); margin: 0; font-size: 1.3rem; font-weight: 600;">Personalized Attention</h3>
+            </div>
+            <span class="accordion-icon" style="font-size: 1.5rem; color: var(--primary-color); transition: transform 0.3s ease;">+</span>
+          </div>
+          <div class="accordion-content" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: var(--bg-primary);">
+            <div style="padding: 0 24px 24px;">
+              <p style="color: var(--text-secondary); line-height: 1.6; margin: 0;">One-on-one personalized attention ensuring every student receives focused guidance tailored to their unique learning style</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" style="background: var(--bg-primary); border-radius: 12px; box-shadow: var(--shadow-md); border: 1px solid var(--border-color); overflow: hidden; transition: all 0.3s ease;">
+          <div class="accordion-header" style="display: flex; align-items: center; justify-content: space-between; padding: 24px; cursor: pointer; background: linear-gradient(135deg, #f0fdf4, #dcfce7); transition: all 0.3s ease;" onclick="toggleAccordion(this)">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <span style="font-size: 2rem;">📊</span>
+              <h3 style="color: var(--success-color); margin: 0; font-size: 1.3rem; font-weight: 600;">Progress Tracking</h3>
+            </div>
+            <span class="accordion-icon" style="font-size: 1.5rem; color: var(--success-color); transition: transform 0.3s ease;">+</span>
+          </div>
+          <div class="accordion-content" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: var(--bg-primary);">
+            <div style="padding: 0 24px 24px;">
+              <p style="color: var(--text-secondary); line-height: 1.6; margin: 0;">Regular feedback and comprehensive progress reports to keep students and parents informed about academic development</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item" style="background: var(--bg-primary); border-radius: 12px; box-shadow: var(--shadow-md); border: 1px solid var(--border-color); overflow: hidden; transition: all 0.3s ease;">
+          <div class="accordion-header" style="display: flex; align-items: center; justify-content: space-between; padding: 24px; cursor: pointer; background: linear-gradient(135deg, #fdf2f8, #fce7f3); transition: all 0.3s ease;" onclick="toggleAccordion(this)">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <span style="font-size: 2rem;">🧠</span>
+              <h3 style="color: var(--primary-light); margin: 0; font-size: 1.3rem; font-weight: 600;">Conceptual Learning</h3>
+            </div>
+            <span class="accordion-icon" style="font-size: 1.5rem; color: var(--primary-light); transition: transform 0.3s ease;">+</span>
+          </div>
+          <div class="accordion-content" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: var(--bg-primary);">
+            <div style="padding: 0 24px 24px;">
+              <p style="color: var(--text-secondary); line-height: 1.6; margin: 0;">Focus on understanding concepts deeply rather than memorization, building strong foundations for future learning</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item" style="background: var(--bg-primary); border-radius: 12px; box-shadow: var(--shadow-md); border: 1px solid var(--border-color); overflow: hidden; transition: all 0.3s ease;">
+          <div class="accordion-header" style="display: flex; align-items: center; justify-content: space-between; padding: 24px; cursor: pointer; background: linear-gradient(135deg, #f0f9ff, #e0f2fe); transition: all 0.3s ease;" onclick="toggleAccordion(this)">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <span style="font-size: 2rem;">💰</span>
+              <h3 style="color: var(--secondary-color); margin: 0; font-size: 1.3rem; font-weight: 600;">Affordable Pricing</h3>
+            </div>
+            <span class="accordion-icon" style="font-size: 1.5rem; color: var(--secondary-color); transition: transform 0.3s ease;">+</span>
+          </div>
+          <div class="accordion-content" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: var(--bg-primary);">
+            <div style="padding: 0 24px 24px;">
+              <p style="color: var(--text-secondary); line-height: 1.6; margin: 0;">Competitive pricing with flexible timing options making quality education accessible to all families</p>
+            </div>
+          </div>
+        </div>
+
+   
+      </div>
+    </div>
+
+    <script>
+      function toggleAccordion(header) {
+        const content = header.nextElementSibling;
+        const icon = header.querySelector('.accordion-icon');
+        const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+        
+        // Close all other accordions
+        document.querySelectorAll('.accordion-content').forEach(item => {
+          if (item !== content) {
+            item.style.maxHeight = '0px';
+            item.previousElementSibling.querySelector('.accordion-icon').textContent = '+';
+            item.previousElementSibling.querySelector('.accordion-icon').style.transform = 'rotate(0deg)';
+          }
+        });
+        
+        // Toggle current accordion
+        if (isOpen) {
+          content.style.maxHeight = '0px';
+          icon.textContent = '+';
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.textContent = '−';
+          icon.style.transform = 'rotate(180deg)';
+        }
+      }
+    </script>
+  </section>
+
+  
+
+  <section id="contact" class="animate-on-scroll">
+    <div class="container">
+      <h2>Get in Touch</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: stretch; justify-content: center;">
+        <!-- Contact Details Column -->
+        <div style="flex: 1 1 350px; min-width: 320px; max-width: 500px; display: flex;">
+          <div class="contact-info" style="text-align: left; margin-top: 0; flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+            
+              
+              <div style="margin-bottom: 20px;">
+                <h4 style="color: var(--text-primary); margin-bottom: 8px; font-size: 1.1rem;">📞 Contact Number</h4>
+                <p style="margin-bottom: 0; font-size: 1rem;"><strong>+91-9650924064</strong></p>
+              </div>
+              
+              <div style="margin-bottom: 20px;">
+                <h4 style="color: var(--text-primary); margin-bottom: 8px; font-size: 1.1rem;">✉️ Email</h4>
+                <p style="margin-bottom: 0; font-size: 1rem;"><strong>aroraneeru36@gmail.com</strong></p>
+              </div>
+              
+              <div style="margin-bottom: 20px;">
+                <h4 style="color: var(--text-primary); margin-bottom: 8px; font-size: 1.1rem;">📍 Service Areas</h4>
+                <p style="margin-bottom: 0; font-size: 1rem;">Crossing Republik & Online</p>
+              </div>
+              
+              <div style="margin-bottom: 20px;">
+                <h4 style="color: var(--text-primary); margin-bottom: 8px; font-size: 1.1rem;">🕒 Reachable Hours</h4>
+                <p style="margin-bottom: 8px; font-size: 1rem;"><strong>Monday - Friday:</strong> 11:00 PM - 3:00 PM</p>
+                <p style="margin-bottom: 8px; font-size: 1rem;"><strong>Saturday - Sunday:</strong> 12:00 AM - 6:00 PM</p>
+              </div>
+              
+              <div style="margin-bottom: 20px;">
+                <h4 style="color: var(--text-primary); margin-bottom: 8px; font-size: 1.1rem;">💬 Quick Contact</h4>
+                <p style="margin-bottom: 0; font-size: 1rem;">
+                  <a href="https://wa.me/919650924064" target="_blank" style="color: var(--primary-color); text-decoration: none; font-weight: 500;">Chat with us on WhatsApp</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Enquiry Form Column -->
+        <div style="flex: 1 1 350px; min-width: 320px; max-width: 500px; display: flex;">
+          <form class="contact-form" name="submit-to-google-sheet" style="margin: 0; flex: 1; display: flex; flex-direction: column;">
+            <input type="text" name="student_name" placeholder="Student's Name" required />
+            <input type="text" name="class" placeholder="Class (1-12)" required />
+            <input type="text" name="subjects" placeholder="Subjects" />
+            <select name="mode" required>
+              <option value="">Select Learning Mode</option>
+              <option value="home">Private Home Tuition</option>
+              <option value="online">Online Classes</option>
+              <option value="center">Center-based Batch</option>
+            </select>
+            <input type="text" name="parent_name" placeholder="Parent's Name" required />
+            <input type="tel" name="contact" placeholder="Contact Number" required />
+            <textarea name="message" placeholder="Any additional information or specific requirements" rows="4" style="flex: 1;"></textarea>
+            <button type="submit">Submit Enquiry</button>
+          </form>
+        </div>
+      </div>
+      <div class="contact-info" style="background: var(--gradient-secondary); color: white;">
+        <p style="font-size: 1.1rem; margin-bottom: 16px;">
+          📞 <strong>+91-9650924064</strong> | ✉️ <strong>aroraneeru36@gmail.com</strong>
+        </p>
+        <p style="font-size: 1rem;">
+          💬 <a href="https://wa.me/919650924064" target="_blank" style="color: white;">Chat with us on WhatsApp</a>
+        </p>
+      </div>
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2025 LearnHive. Personalized Tuition for Curious Young Minds.</p>
+    <div class="container">
+      <p>&copy; 2025 LearnHive Academy. Personalized Tuition for Curious Young Minds.</p>
+    </div>
   </footer>
 
   <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwLqJ-0JHy8qfgaq_QZ8WpUFn5yXaAVKnKp2lKncJvK/exec';
-    const form = document.forms['submit-to-google-sheet'];
+    // Form submission
+    window.addEventListener('DOMContentLoaded', function () {
+      const form = document.forms['submit-to-google-sheet'];
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const button = form.querySelector('button');
+        const originalText = button.textContent;
+        
+        button.textContent = 'Submitting...';
+        button.disabled = true;
+        
+        fetch('https://script.google.com/macros/s/AKfycbwrh7AUzSNItLoX7zC1KnYiWdpr55ROG-IWw2sv86jNsDv4RyWowR2hNEtRfslgYFzCYQ/exec', {
+          method: 'POST',
+          body: new FormData(form)
+        })
+        .then(response => {
+          alert("Thank you! Your enquiry has been submitted successfully. We'll get back to you soon!");
+          form.reset();
+        })
+        .catch(error => {
+          alert("Something went wrong. Please try again or contact us directly.");
+        })
+        .finally(() => {
+          button.textContent = originalText;
+          button.disabled = false;
+        });
+      });
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => alert("Form submitted successfully!"))
-        .catch(error => alert("Something went wrong. Please try again later."));
+      // Scroll animations
+      const animatedObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            if (entry.target.classList.contains('animate-on-scroll')) {
+              entry.target.classList.add('animated');
+            }
+            animatedObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      // Observe feature items and sections
+      document.querySelectorAll('.feature-item, .animate-on-scroll').forEach(item => {
+        animatedObserver.observe(item);
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
     });
   </script>
+
+  <a href="https://wa.me/919650924064" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
 </body>
 </html>
